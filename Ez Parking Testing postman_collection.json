@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "08b4f35e-c61f-4bd4-9c87-382002e493af",
+		"name": "EZ Parking Endpoint Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - User vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e62e587f-9b32-47ce-b642-8165f786e2cf",
+						"type": "text/javascript",
+						"exec": [
+							"const vehicles = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    pm.expect(Array.isArray(vehicles)).to.eql(true)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:4000/api/vehicle/4",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehicle",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - User reservations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6383077a-fbc6-4942-8165-04244ff57695",
+						"type": "text/javascript",
+						"exec": [
+							"const listing = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    pm.expect(Array.isArray(listing)).to.eql(true)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:4000/api/reservation/2",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"reservation",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Listing preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dcd7885-5e3a-4176-8904-5d4874091eca",
+						"type": "text/javascript",
+						"exec": [
+							"const listing = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"response is an array with length 1\", () => {",
+							"    pm.expect(Array.isArray(listing)).to.equal(true)",
+							"    pm.expect(listing.length).to.eql(1)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:4000/api/preview/5",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"preview",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Listings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ec33d21-f284-4928-832e-18a776543af5",
+						"type": "text/javascript",
+						"exec": [
+							"const listings = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"response is an array with length greather than 0\", () => {",
+							"    pm.expect(Array.isArray(listings)).to.equal(true)",
+							"    pm.expect(listings.length).to.be.above(0)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:4000/api/listing/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"listing",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - User listings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "498bfd89-e062-4ae4-b3ee-cedcb2a045dc",
+						"type": "text/javascript",
+						"exec": [
+							"const listing = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    pm.expect(Array.isArray(listing)).to.eql(true)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:4000/api/listing/3",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"listing",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create vehicle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a849914-d02c-4573-9ccc-ee9bf42d9d6c",
+						"type": "text/javascript",
+						"exec": [
+							"const vehicle = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array with a length of 1\", function () {",
+							"    pm.expect(Array.isArray(vehicle)).to.eql(true)",
+							"    pm.expect(vehicle.length).to.eql(1)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"user_id\": 6,\n        \"car_pic\": \"https://img.gta5-mods.com/q95/images/2015-lamborghini-aventador-lp700-4-stock-interior-color-hq-animated-engine-livery-tunable-autospoiler/7aa5a3-20161215210522_1.jpg\",\n        \"year\": 2018,\n        \"make\": \"Lamborghini\",\n        \"model\": \"Aventador\",\n        \"color\": \"Lime\",\n        \"size\": \"coupe\",\n        \"plate\": \"123DEF\"\n}"
+				},
+				"url": {
+					"raw": "localhost:4000/api/vehicle",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e33070a1-5c44-4ad8-9b43-e3afec93dff2",
+						"type": "text/javascript",
+						"exec": [
+							"const reservation = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array with a length of 1\", function () {",
+							"    pm.expect(Array.isArray(reservation)).to.eql(true)",
+							"    pm.expect(reservation.length).to.eql(1)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 6,\n    \"listing_id\": 6\n}"
+				},
+				"url": {
+					"raw": "localhost:4000/api/reservation",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create pictures",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df1368ac-1d69-4ba1-91df-e58a97b07ea3",
+						"type": "text/javascript",
+						"exec": [
+							"const pictures = pm.response.json()",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array with a length of 1\", function () {",
+							"    pm.expect(Array.isArray(pictures)).to.eql(true)",
+							"    pm.expect(pictures.length).to.eql(1)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pic_one\":\"test_one.png\",\n\t\"pic_two\":\"test_two.png\",\n\t\"pic_three\":\"test_three.png\",\n\t\"pic_four\":\"test_four.png\",\n\t\"listing_id\":8\n}"
+				},
+				"url": {
+					"raw": "localhost:4000/api/picture",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"picture"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
